@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Let's Lunch</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<main>
@@ -12,7 +13,7 @@
 	Today we have special offers on burgers! Which burger do you like?
 </h2>
 </section>
-<section><table>
+<table id="burgernames">
 	<thead>
 		<tr>
 			<th>The Sharp Burger</th>
@@ -20,7 +21,7 @@
       <th>The Black Burger</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="description">
         <tr>
             <td><img src="https://i2.wp.com/fullofplants.com/wp-content/uploads/2018/01/smoky-tempeh-black-bean-burgers-14.jpg?w=1400&ssl=1" alt="Span" title="Magic Burger" height="300"></td>
             <td><img src="https://www.wearesovegan.com/wp-content/uploads/2018/03/SV_GreenBurger_V1_Header1.jpg" alt "Span" title "2" height="300"</td>
@@ -28,11 +29,11 @@
         </tr>
         <tr>
             <td><ul>
-							<li>This burger contains meat!</li>
+							<li id="thedescription">This burger contains meat!</li>
 							<li>Tastes like a knife</li></ul></td>
 
 						<td><ul>
-							<li>This burger doesn't meaat!</li>
+							<li>This burger doesn't contain meat!</li>
 							<li>Tastes like a tomato</li></ul></td>
 
 						<td><ul>
@@ -41,7 +42,7 @@
         </tr>
 
 </table></section>
-<section id="contact">
+<section class="contact">
 <h3>We also need to know where to deliver the food...</h3>
 <form>
 	<p>
@@ -79,7 +80,7 @@
 </p>
 </form>
 </section>
-<input type="submit" value="Send">
+<button type="submit" id="mybutton"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30></button>
 </main>
 <footer>
 	VERY COPYRIGHTED - DON'T TRY TO COPY!!!
