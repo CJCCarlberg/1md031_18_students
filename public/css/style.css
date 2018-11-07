@@ -1,5 +1,4 @@
 
-
 body {
 	font-family: "Courier New";
 	color: Crimson;
@@ -7,29 +6,70 @@ body {
 	font-size: 1.2em;
 	height: 30em;
 	margin: 2em 0px 4em 1em;
-	
+
 }
 button:hover {
     	background-color: HotPink;
 	cursor: crosshair;
 }
 
+.header{
+margin-left: 10em;
+margin-right: 10em;
+height: 30em;
+overflow: hidden;
+
+}
+
+#headtag{position: absolute;
+top: 5em;
+}
+
+#backgroundphoto{
+opacity:0.5;
+}
+
 .contact{
+border: 2px dashed DodgerBlue;
+margin-right: 10em;
+margin-left: 10em;
+width: 40%;
+padding-left: 20px;
 color: DodgerBlue;}
 
-#description{
-background-color: coral;}
-
-#burgernames{
-width: 40%;
-margin-left: 15%;
-margin-right: 45%;
-color: Indigo;}
 
 #mybutton{
 	margin: 10px 2px 10px 0px;
 }
 
 #thedescription{
-	color: DarkGreen;
-}
+	color: DarkGreen;}
+
+.wrapper {
+display: grid;
+grid-gap: 10px;
+grid-row-gap: 2em;
+grid-columns-gap: 2em;
+background-color: coral;
+color: Indigo;
+border: 2px dashed Indigo;
+margin-right: 10em;
+margin-left: 10em;
+width: 60%;}
+
+ .box {
+border: 2px dashed Indigo;
+margin-right: 10em;
+margin-left: 10em;
+color: Indigo;
+ }
+
+ .box_a {
+     grid-column: 1;
+ }
+ .box_b {
+     grid-column: 2;
+ }
+ .box_c {
+     grid-column: 3;
+ }
