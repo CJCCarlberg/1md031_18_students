@@ -13,7 +13,20 @@ button:hover {
 	cursor: crosshair;
 }
 
-.header{
+#firstBurger{
+	margin-top: 1.5cm;
+	 margin-bottom: 1.5cm;
+}
+
+#secondBurger{
+	margin-bottom: 1.5cm
+}
+
+#thirdBurger{
+	margin-bottom: 1.5cm
+}
+
+#header{
 margin-left: 10em;
 margin-right: 10em;
 height: 30em;
@@ -49,7 +62,7 @@ color: DodgerBlue;}
 display: grid;
 grid-gap: 10px;
 grid-row-gap: 2em;
-grid-columns-gap: 2em;
+grid-column-gap: 2em;
 background-color: coral;
 color: Indigo;
 border: 2px dashed Indigo;
@@ -64,12 +77,28 @@ margin-left: 10em;
 color: Indigo;
  }
 
- .box_a {
+ .box0 {
      grid-column: 1;
  }
- .box_b {
+ .box1 {
      grid-column: 2;
  }
- .box_c {
+ .box1 {
      grid-column: 3;
  }
+
+ .flexcontainer {
+	 display: flex;
+	 flex-direction: row;
+	 background-color: coral;
+	 color: Indigo;
+	 border: 2px dashed Indigo;
+	 margin-right: 10em;
+		margin-left: 10em;
+		display: grid;
+		grid-gap: 10px;
+		grid-row-gap: 2em;
+		grid-column-gap: 2em;
+ }
+ .column{color: DarkGreen
+	}
