@@ -62,19 +62,5 @@ margin-right: 5em;
 margin-left: 5em;
 width: 80%;}
 
-
- .flexcontainer {
-	 display: flex;
-	 flex-direction: row;
-	 background-color: coral;
-	 color: Indigo;
-	 border: 2px dashed Indigo;
-	 margin-right: 10em;
-		margin-left: 10em;
-		display: grid;
-		grid-gap: 10px;
-		grid-row-gap: 2em;
-		grid-column-gap: 2em;
- }
  .column{color: DarkGreen
 	}

@@ -20,19 +20,6 @@
 <h1 id="headtag">Welcome to Let's Lunch - Your favourite lunch restaurant!</h1>
 </section><main>
 
-
-<!--<div class="wrapper">
-   <div v-for="(theBurger, index) in burgerMenu" :key="theBurger.index">
-   <p>{{theBurger.name}}</p>
- <img v-bind:src="theBurger.picture" height="300">
- <p>{{theBurger.taste}}</p>
- <p v-if= "theBurger.gluten"> {{glutenMessage}}</p>
- <p v-if= "theBurger.lactose">{{lactoseMessage}}</p>
-
- </div>
-</div> -->
-
-
 <div class="wrapper">
    <div v-for="(food, index) in myMenu">
   <input type="checkbox"  v-model="checkOrder[index]"><label>{{food.name}}</label>
@@ -43,17 +30,6 @@
 
  </div>
 </div>
-
-
-<!--<table class="flexcontainer">
-		<thead><tr><th v-for = "theBurger in burgerMenu">{{ theBurger.name }}</th></tr></thead>
-	<tbody class= "column"><tr><td v-for = "theBurger in burgerMenu">{{theBurger.taste}}</td>
-		<td  v-for = "theBurger in burgerMenu" v-if= "theBurger.gluten">{{glutenMessage}}</td>
-		<td  v-for = "theBurger in burgerMenu" v-if= "theBurger.lactose">{{lactoseMessage}}</td>
-		<img  v-for = "theBurger in burgerMenu" v-bind:src="theBurger.picture" height="300">
-	</tr>
-	</tbody>
-</table> -->
 
 </table></section>
 <section class="contact">
@@ -70,13 +46,15 @@
 			</div>
 		</div>
 	</div>
+	{{orders}}
 	<p>Email<br><input v-model="emailBox" type="email" placeholder="Enter your personal email"></p>
 </form></section>
+
 <section id="payment">
 	<h3>Time to pay....</h3>
 	<form action="">
   <input type="radio" name="gender" value="male" v-model="genderPick"> Male<br>
-  <input type="radio" name="gender" value="female" v-model=genderPick> Female<br>
+  <input type="radio" name="gender" value="female" v-model="genderPick"> Female<br>
   <input type="radio" name="gender" value="other" checked="checked" v-model="genderPick"> Other
 	<p><label for="Payment">Payment</label><br>
     <select v-model="paymentSelect">
@@ -89,8 +67,10 @@
     </select></p>
 </form>
 </section>
-<button type="submit" v-on:click="addOrder"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30>
+
+<button type="submit" id="vue-container" v-on:click="addOrder()"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30>
 	</button>
+
 </main>
 <footer>
 	VERY COPYRIGHTED - DON'T TRY TO COPY!!!
@@ -98,7 +78,7 @@
 
 <p id = "theOrder"> Ordered burgers: <span v-for="(checkorders, index) in checkOrder" v-if="checkorders">{{myMenu[index].name}} </span><br>
 {{nameBox}} with email {{emailBox}} and gender {{genderPick}} will pay with {{paymentSelect}}</p><br>
-{{orders}}
+
 
 
 </body>

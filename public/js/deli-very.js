@@ -25,7 +25,7 @@ var vm = new Vue({
     myMenu: food,
     myT: "T",
   },
-  created: function () {
+  /*created: function () {
     socket.on('initialize', function (data) {
       this.orders = data.orders;
     }.bind(this));
@@ -33,7 +33,7 @@ var vm = new Vue({
     socket.on('currentQueue', function (data) {
       this.orders = data.orders;
     }.bind(this));
-  },
+  },*/
   methods: {
     getNext: function () {
       var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
@@ -61,9 +61,12 @@ var vm = new Vue({
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getNext(),
+                                details: {x: this.orders.x,
+                                          y: this.order.y},/*
                                 details: { x: orders.clientX - 10 - offset.x,
-                                           y: orders.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
+                                           y: orders.clientY - 10 - offset.y },*/
+                                orderItems: ["Beans", "Curry"],
+
                               });
     },
   }
