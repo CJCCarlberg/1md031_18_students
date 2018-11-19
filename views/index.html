@@ -2,17 +2,15 @@
 <html>
 <head>
 	<title>Burgers</title>
-		<script src="https://vuejs.org/js/vue.js"></script>
+	<script src="https://vuejs.org/js/vue.js"></script>
 	<link rel="stylesheet" href="css/deli-very.css">
 	<script src="/vue/vue.js" defer></script>
 	<script src="/socket.io/socket.io.js" defer></script>
+	<script type="text/javascript" src="js/menu.js" defer></script>
 	<script src="js/deli-very.js" defer></script>
-
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script src="js/js_script.js"></script>
-
-	<script src="js/vue_script.js" defer></script> <!-- GLÖM EJ DIFER! -->
-
+	<script src="js/vue_script.js" defer></script> <!-- GLÖM EJ DEFER! -->
 	</head>
 
 <body>
@@ -23,25 +21,29 @@
 </section><main>
 
 
-<table class="flexcontainer" aria-busy = "false" aria-colcount = "3" aria-rowcount = "5">
-			<thead> <tr><th v-for = "(theBurger, index) in burgerMenu" aria-colindex = index>{{ theBurger.name }}</th></tr></thead>
+<!--<div class="wrapper">
+   <div v-for="(theBurger, index) in burgerMenu" :key="theBurger.index">
+   <p>{{theBurger.name}}</p>
+ <img v-bind:src="theBurger.picture" height="300">
+ <p>{{theBurger.taste}}</p>
+ <p v-if= "theBurger.gluten"> {{glutenMessage}}</p>
+ <p v-if= "theBurger.lactose">{{lactoseMessage}}</p>
 
-		<tbody class= "column"><tr><td v-for = "(theBurger, index) in burgerMenu" aria-colindex = index>{{theBurger.taste}}</td>
-			<!--<td  v-for = "theBurger in burgerMenu" v-if= "theBurger.gluten">{{glutenMessage}}</td>
-			<td  v-for = "theBurger in burgerMenu" v-if= "theBurger.lactose">{{lactoseMessage}}</td>
-			<img  v-for = "theBurger in burgerMenu" v-bind:src="theBurger.picture" height="300">
-		</tr>-->
-		</tbody>
-</table>
-
-<div class="wrapper" v-for = "(theBurger, index) in burgerMenu" :key = "index">
-   <div class= "box"+ index><p>{{theBurger.name}}</p>
-		 <img v-bind:src="theBurger.picture" height="300">
-		 <p>{{theBurger.taste}}</p>
-		 <p v-if= "theBurger.gluten"> {{glutenMessage}}</p>
-		 <p v-if= "theBurger.lactose">{{lactoseMessage}}</p>
-	 </div>
  </div>
+</div> -->
+
+
+<div class="wrapper">
+   <div v-for="(food, index) in myMenu">
+  <input type="checkbox"  v-model="checkOrder[index]"><label>{{food.name}}</label>
+ <img v-bind:src="food.picture" height="300">
+ <p>{{food.taste}}</p>
+ <p v-if= "food.gluten"> {{glutenMessage}}</p>
+ <p v-if= "food.lactose">{{lactoseMessage}}</p>
+
+ </div>
+</div>
+
 
 <!--<table class="flexcontainer">
 		<thead><tr><th v-for = "theBurger in burgerMenu">{{ theBurger.name }}</th></tr></thead>
@@ -53,104 +55,50 @@
 	</tbody>
 </table> -->
 
-
-
-<!--<div class="flexcontainer is-multiline is-mobile" v-for = "theBurger in burgerMenu">
-		<div class= "column is-one-third"> {{ theBurger.name }}
-		<div> {{theBurger.taste}}</div>
-		<div v-if= "theBurger.gluten">{{glutenMessage}}</div>
-		<div v-if= "theBurger.lactose">{{lactoseMessage}}</div>
-		<img v-bind:src="theBurger.picture" height="300">
-	</div>
-</div> -->
-
-
-<div class="wrapper">
-   <div class="box_a"><p>The Sharp Burger</p>
-		 <img src="https://i2.wp.com/fullofplants.com/wp-content/uploads/2018/01/smoky-tempeh-black-bean-burgers-14.jpg?w=1400&ssl=1" alt="Span" title="Magic Burger" height="300">
-		 <p>Tastes like a knife</p>
-		 <p>This burger contains meat!</p>
-	 </div>
-   <div class="box_b"><p>The Green Burger</p>
-		 <img src="https://www.wearesovegan.com/wp-content/uploads/2018/03/SV_GreenBurger_V1_Header1.jpg" alt="Span" title="2" height="300">
-		 <p>This burger doesn't contain meat</p>
-		 <p>Tastes like a tomato</p>
-	 </div>
-   <div class="box_c"><p>The Black Burger</p>
-	 <img src="https://mittkok.expressen.se/wp-content/uploads/2017/06/cajunboken-2017-blackeyed-been-burger-700x700.jpg" height="300">
-	 <p>This burger contains beans</p>
-	<p>Tastes gooood!</p>
-	</div>
- </div>
-
-
 </table></section>
 <section class="contact">
 <h3>We also need to know where to deliver the food...</h3>
 <form>
-	<p>
-    <label for="First name and last name">Name</label><br>
-    <input type="text" id="firstname" name="fn" required="required" placeholder="First name and last name">
-</p>
-<p>
-    <label for="Street">Street</label><br>
-    <input type="Street" id="Street" name="St" placeholder="Street name">
-</p>
-<p>
-    <label for="Number">House number</label><br>
-    <input type="Number" id="Number" name="doesnt matter" placeholder="Street name">
-</p>
-<p>
-		<label for="Email">Email</label><br>
-    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-</p>
+	<p>Name<br><input v-model="nameBox" placeholder="Enter first name and last name"></p>
+	<!--<p>Street	<br><input v-model="streetBox" placeholder="Enter street name"></p>
+	<p>Street number<br><input v-model="numberBox" type="Number" placeholder="Enter street number"></p>-->
+	<div class="view-box">
+		<div id="dots" v-on:click="displayOrder">
+			<div v-for="(order, key) in orders"
+				 v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+				{{myT}}
+			</div>
+		</div>
+	</div>
+	<p>Email<br><input v-model="emailBox" type="email" placeholder="Enter your personal email"></p>
 </form></section>
 <section id="payment">
 	<h3>Time to pay....</h3>
 	<form action="">
-  <input type="radio" name="gender" value="male"> Male<br>
-  <input type="radio" name="gender" value="female"> Female<br>
-  <input type="radio" name="gender" value="Do not wish to provide" checked="checked"> Do not wish to provide
-	<p>
-    <label for="Payment">Payment</label><br>
-    <select id="Payment" name="rcp">
+  <input type="radio" name="gender" value="male" v-model="genderPick"> Male<br>
+  <input type="radio" name="gender" value="female" v-model=genderPick> Female<br>
+  <input type="radio" name="gender" value="other" checked="checked" v-model="genderPick"> Other
+	<p><label for="Payment">Payment</label><br>
+    <select v-model="paymentSelect">
+				<option disabled value="">Select your payment</option>
         <option>Swish</option>
         <option>Mastercard</option>
         <option>Visa</option>
         <option>Cash</option>
         <option>Traveler Check</option>
-    </select>
-</p>
+    </select></p>
 </form>
 </section>
-<button type="submit" id="mybutton"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30></button>
+<button type="submit" v-on:click=addOrder() id="mybutton"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30></button>
 </main>
 <footer>
 	VERY COPYRIGHTED - DON'T TRY TO COPY!!!
 </footer>
 
-<!--<a href="/map">View map</a>-->
+<p id = "theOrder"> Ordered burgers: <span v-for="(checkorders, index) in checkOrder" v-if="checkorders">{{myMenu[index].name}} </span><br>
+{{nameBox}} with email {{emailBox}} and gender {{genderPick}} will pay with {{paymentSelect}}</p><br>
+{{orders}}
 
-{{ burgerChoice }} <button v-on:click="changeText()">Change message</button>
 
-<div v-for="burger in burgers">
-	{{ burger.name }} " " {{ burger.img }}
-</div>
-
-<div v-bind:title="hooverTitle">HOOVER HERE</div>fj
-<div id="vuejsID">
-    <input v-model="vueModel">
-    <h1>{{burgerChoice}}</h1>
-</div>
-
-<div class="view-box">
-	<div id="dots" v-on:click="addOrder">
-		<div v-for="(order, key) in orders"
-			 v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-			{{key}}
-		</div>
-	</div>
-</div>
-</div>
 </body>
 </html>
