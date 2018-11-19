@@ -41,12 +41,13 @@
 	<div class="view-box">
 		<div id="dots" v-on:click="displayOrder">
 			<div v-for="(order, key) in orders"
-				 v-bind:style="{ left: order.orders.x + 'px', top: order.orders.y + 'px'}">
+				 v-bind:style="{ left: deliveryLocation.x + 'px', top: deliveryLocation.y + 'px'}">
+
 				{{myT}}
 			</div>
 		</div>
 	</div>
-	{{orders}}
+	{{deliveryLocation}}
 	<p>Email<br><input v-model="emailBox" type="email" placeholder="Enter your personal email"></p>
 </form></section>
 
@@ -68,7 +69,7 @@
 </form>
 </section>
 
-<button type="submit" id="vue-container" v-on:click="addOrder()"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30>
+<button type="submit" id="vue-container" v-on:click="addOrder"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30>
 	</button>
 
 </main>
@@ -78,7 +79,7 @@
 
 <p id = "theOrder"> Ordered burgers: <span v-for="(checkorders, index) in checkOrder" v-if="checkorders">{{myMenu[index].name}} </span><br>
 {{nameBox}} with email {{emailBox}} and gender {{genderPick}} will pay with {{paymentSelect}}</p><br>
-
+</div>
 
 
 </body>

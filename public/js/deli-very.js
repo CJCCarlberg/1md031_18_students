@@ -8,6 +8,7 @@ var vm = new Vue({
   el: '#vue-container', /*binds my vue instance to HTML*/
   data: {
     orders: {},
+    deliveryLocation: {},
 
 
     glutenMessage: "Contains gluten", lactoseMessage: "Contains lactose",
@@ -51,23 +52,20 @@ var vm = new Vue({
     displayOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
-      socket.emit("addOrder", { orderId: this.getNextNew(),
-                                orders: {x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y},
-                                orderItems: ["Beans", "Curry"]
-                              });
+                    this.deliveryLocation = { x: event.clientX - 10 - offset.x,
+                                    y: event.clientY - 10 - offset.y };
+                              }
     },
     addOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getNext(),
-                                details: {x: this.orders.x,
-                                          y: this.order.y},/*
+                                details: {x: this.deliveryLocation.x,
+                                          y: this.deliveryLocation.y},/*
                                 details: { x: orders.clientX - 10 - offset.x,
                                            y: orders.clientY - 10 - offset.y },*/
                                 orderItems: ["Beans", "Curry"],
 
                               });
     },
-  }
-});
+  });
