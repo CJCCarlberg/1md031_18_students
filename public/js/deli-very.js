@@ -11,11 +11,10 @@ var vm = new Vue({
 
 
     glutenMessage: "Contains gluten", lactoseMessage: "Contains lactose",
-    hooverTitle: "TEST",
     textInput: null,
     nameBox: null,
-    streetBox: null,
-    numberBox: null,
+    /*streetBox: null,
+    numberBox: null,*/
     emailBox: null,
     burgerChoice: "Choose a burger!",
     genderPick: null,
@@ -26,7 +25,7 @@ var vm = new Vue({
     myMenu: food,
     myT: "T",
   },
-  /*created: function () {
+  created: function () {
     socket.on('initialize', function (data) {
       this.orders = data.orders;
     }.bind(this));
@@ -34,7 +33,7 @@ var vm = new Vue({
     socket.on('currentQueue', function (data) {
       this.orders = data.orders;
     }.bind(this));
-  },*/
+  },
   methods: {
     getNext: function () {
       var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
@@ -55,8 +54,6 @@ var vm = new Vue({
       socket.emit("addOrder", { orderId: this.getNextNew(),
                                 orders: {x: event.clientX - 10 - offset.x,
                                            y: event.clientY - 10 - offset.y},
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
                                 orderItems: ["Beans", "Curry"]
                               });
     },
