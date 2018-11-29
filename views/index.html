@@ -22,7 +22,7 @@
 
 <div class="wrapper">
    <div v-for="(food, index) in myMenu">
-  <input type="checkbox"  v-model="checkOrder[index]"><label>{{food.name}}</label>
+  <input type="checkbox" v-bind:value="food.name" v-model="checkOrder"><label>{{food.name}}</label>
  <img v-bind:src="food.picture" height="300">
  <p>{{food.taste}}</p>
  <p v-if= "food.gluten"> {{glutenMessage}}</p>
@@ -40,12 +40,13 @@
 	<p>Street number<br><input v-model="numberBox" type="Number" placeholder="Enter street number"></p>-->
 	<div class="view-box">
 		<div id="dots" v-on:click="displayOrder">
-			<div v-for="(order, key) in orders"
+			<div
 				 v-bind:style="{ left: deliveryLocation.x + 'px', top: deliveryLocation.y + 'px'}">
 
 				{{myT}}
 			</div>
 		</div>
+
 	</div>
 	{{deliveryLocation}}
 	<p>Email<br><input v-model="emailBox" type="email" placeholder="Enter your personal email"></p>
@@ -69,7 +70,8 @@
 </form>
 </section>
 
-<button type="submit" id="vue-container" v-on:click="addOrder"><img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30>
+<button type="submit" id="vue-container" v-on:click="computeOrder(), addOrder()">
+	<img src="http://www.pngmart.com/files/3/Submit-Button-PNG-Clipart.png" value="Send" height=30>
 	</button>
 
 </main>
