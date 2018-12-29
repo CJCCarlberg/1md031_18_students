@@ -13,7 +13,7 @@ var vm = new Vue({
     glutenMessage: "Contains gluten", lactoseMessage: "Contains lactose",
     textInput: null,
     nameBox: null,
-
+    lastOrder: 0,
     emailBox: null,
     burgerChoice: "Choose a burger!",
     genderPick: null,
@@ -28,16 +28,13 @@ var vm = new Vue({
       theEmail: '',
       theGender: '',
     },
-    /*theCustomer: [{this.nameBox}],*/
     myT: "T",
   },
 
   methods: {
     getNext: function () {
-      var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
-        return Math.max(last, next);
-      }, 0);
-      return lastOrder + 1;
+      this.lastOrder = this.lastOrder+1;
+      return (this.lastOrder);
     },
 
      computeOrder: function(){
@@ -60,8 +57,6 @@ var vm = new Vue({
                                 details: {x: this.deliveryLocation.x,
                                           y: this.deliveryLocation.y},
                                 orderItems: this.checkOrder,
-                              /*  customerInfo: [this.theCustomer.theName,this.theCustomer.theEmail,
-                                  this.theCustomer.theGender] */
                                 customerInfo: this.theCustomer});
     }
   }
